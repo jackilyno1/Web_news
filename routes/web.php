@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -63,6 +64,20 @@ Route::middleware(['auth'])->group(function(){
          Route::post('/edit/{post}', [PostController::class, 'update'])->name('update');
 
          Route::DELETE('/destroy', [PostController::class, 'destroy'])->name('delete');
+    });
+
+    Route::prefix('users')->name('user.')->group(function (){
+        Route::get('/add', [UserController::class, 'create'])->name('addUser');
+
+         Route::post('/add', [UserController::class, 'storeUser'])->name('storeUser');
+
+         Route::get('/list', [UserController::class, 'index'])->name('list');
+
+         Route::get('/edit/{user}', [UserController::class, 'show'])->name('edit');
+
+         Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
+
+         Route::DELETE('/destroy', [UserController::class, 'destroy'])->name('delete');
     });
 
         #upload

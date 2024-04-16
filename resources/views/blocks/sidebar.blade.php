@@ -24,7 +24,7 @@
             placeholder="Search keywords" value="{{request()->keywords}}">
           <div class="input-group-append">
             <button type="submit" class="btn btn- btn-block">
-              <i class="fa fa-search" aria-hidden="true"></i>
+              <i class=" nav-icon fa fa-search" aria-hidden="true"></i>
             </button>
           </div>
         </div>
@@ -82,7 +82,33 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="{{ route('login') }}">Logout</a>
+            <a href="#" class="nav-link">
+              <i class=" nav-icon fa fa-user-circle-o" aria-hidden="true"></i>
+              <p>
+                Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('user.addUser')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('user.list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of users</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{{ route('login') }}">
+              <i class=" nav-icon fa fa-sign-out" aria-hidden="true"></i>
+              <p>Logout</p>
+            </a>
           </li>
         </ul>
       </nav>
