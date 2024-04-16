@@ -62,22 +62,22 @@
             <a href="#" class="nav-link">
               <i class=" nav-icon fa fa-table" aria-hidden="true"></i>
               <p>
-                List of totals
+                Posts
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{route('post.list')}}" class="nav-link"> --}}
+                <a href="{{route('post.addPost')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List of post</p>
-                {{-- </a> --}}
+                  <p>Add Posts</p>
+                </a>
               </li>
               <li class="nav-item">
-                {{-- <a href="{{route('post.list')}}" class="nav-link"> --}}
+                <a href="{{route('post.list')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List of categories</p>
-                {{-- </a> --}}
+                  <p>List of Posts</p>
+                </a>
               </li>
             </ul>
           </li>

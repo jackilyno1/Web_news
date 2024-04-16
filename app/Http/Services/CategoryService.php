@@ -9,7 +9,7 @@ class CategoryService
 {
 
     public function getAll(){
-        return Categories::orderbyDesc('id')->paginate(5);
+        return Categories::orderby('id')->paginate(5);
     }
 
     public function create($request)

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -26,11 +28,14 @@ Route::post('admin/users/login/store', [LoginController::class, 'store']);
 
 Route::middleware(['auth'])->group(function(){
     Route::prefix('admin')->group(function (){
-        Route::get('/', [MainController::class, 'index'])->name('admin');
-        Route::get('dashboard', [MainController::class, 'index'])->name('index');
-    });
 
-    //
+        Route::get('/', [MainController::class, 'index'])->name('admin');
+
+        Route::get('dashboard', [MainController::class, 'index'])->name('index');
+        
+    
+
+    //Categories
     Route::prefix('categories')->name('cate.')->group(function (){
 
         Route::get('/list', [CategoriesController::class, 'index'])->name('list');
@@ -44,5 +49,23 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/edit/{categories}', [CategoriesController::class, 'update'])->name('update');
         
         Route::DELETE('/destroy', [CategoriesController::class, 'destroy'])->name('delete');
+    });
+    #Post
+    Route::prefix('posts')->name('post.')->group(function (){
+        Route::get('/add', [PostController::class, 'create'])->name('addPost');
+
+         Route::post('/add', [PostController::class, 'storePost'])->name('storePost');
+
+         Route::get('/list', [PostController::class, 'index'])->name('list');
+
+         Route::get('/edit/{post}', [PostController::class, 'show'])->name('edit');
+
+         Route::post('/edit/{post}', [PostController::class, 'update'])->name('update');
+
+         Route::DELETE('/destroy', [PostController::class, 'destroy'])->name('delete');
+    });
+
+        #upload
+        Route::post('/upload/services', [UploadController::class, 'store']);
     });
 });
