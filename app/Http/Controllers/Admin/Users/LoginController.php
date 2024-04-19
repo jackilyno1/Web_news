@@ -13,7 +13,7 @@ class LoginController extends Controller
         $title = 'Login';
         return view('admin.users.login', compact('title'));
     }
-    public function store(Request $request){
+    public function login(Request $request){
 
         $this->validate($request, [
             'email' => 'required|email:filter',
@@ -25,7 +25,7 @@ class LoginController extends Controller
             'password' => $request->input('password')
         ], $request->input('remember'))) {
 
-            return redirect()->route('admin');
+            return redirect()->intended('/');
         }
 
         Session::flash('error', 'Email or Password is incorrect');
@@ -34,6 +34,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('/login');
     }
 }

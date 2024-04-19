@@ -15,12 +15,13 @@ class PostService
     }
 
     public function getAll(){
-        return Post::with('post')->orderby('id')->paginate(3);
+        return Post::orderby('id')->paginate(3);
     }
 
     public function insert($request){
         try {
             $request->except('_token');
+            
             Post::create($request->all());
 
             Session::flash('success', 'Post added successfully');

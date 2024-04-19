@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Admin\Users\AdminController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
@@ -23,13 +25,13 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/admin/users/login', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::post('admin/users/login/store', [LoginController::class, 'store']);
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
-Route::middleware(['auth'])->group(function(){
-    Route::prefix('admin')->group(function (){
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::middleware(['role:admin'])->group(function(){
         Route::get('/', [MainController::class, 'index'])->name('admin');
 
         Route::get('dashboard', [MainController::class, 'index'])->name('index');
@@ -59,7 +61,7 @@ Route::middleware(['auth'])->group(function(){
 
          Route::get('/list', [PostController::class, 'index'])->name('list');
 
-         Route::get('/edit/{post}', [PostController::class, 'show'])->name('edit');
+         Route::get('/edit/{post}', [PostController::class, 'edit'])->name('edit');
 
          Route::post('/edit/{post}', [PostController::class, 'update'])->name('update');
 
@@ -73,7 +75,7 @@ Route::middleware(['auth'])->group(function(){
 
          Route::get('/list', [UserController::class, 'index'])->name('list');
 
-         Route::get('/edit/{user}', [UserController::class, 'show'])->name('edit');
+         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
 
          Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
 
@@ -82,5 +84,10 @@ Route::middleware(['auth'])->group(function(){
 
         #upload
         Route::post('/upload/services', [UploadController::class, 'store']);
-    });
+
 });
+
+Route::middleware('role:user')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
+

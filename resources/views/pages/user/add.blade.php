@@ -34,6 +34,11 @@
                 <span style="color: red">{{$message}}</span>
             @enderror
       </div>
+      <div class="form-group mb-3">
+        <label>Role:</label><br>
+        <input type="radio" name="role" value="user" checked> User
+        <input class="ml-2" type="radio" name="role" value="admin"> Admin<br>
+      </div>
     </div>
     <!-- /.card-body -->
 

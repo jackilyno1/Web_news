@@ -27,21 +27,24 @@ class UserController extends Controller
     {
         return view('pages.user.add',[
             'title' => 'Create user',
+            'roles' => $this->userService->getRole(),
         ]);
     }
 
-    public function storeUser(CreateUserRequest $request)
+    public function storeUser(CreateUserRequest $request, User $user)
     {
-        $this->userService->insert($request);
-
+        $this->userService->insert($request, $user);
+        $user = new User();
+        $user->role = $request->input('role');
         return redirect()->back();
     }
 
-    public function show(User $user)
+    public function edit(User $user)
     {
         return view('pages.user.edit', [
             'title' => 'Edit Post',
             'user'=> $user,
+            // 'roles' => $this->userService->getRole(),
         ]);
     }
 
@@ -49,7 +52,7 @@ class UserController extends Controller
     {
         $result = $this->userService->update($request, $user);
         if ($result) {
-            return redirect('/admin/users/list');
+            return redirect('/users/list');
         }
 
         return redirect()->back();

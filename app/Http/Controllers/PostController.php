@@ -40,7 +40,7 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-    public function show(Post $post)
+    public function edit(Post $post)
     {
         return view('pages.post.edit', [
             'title' => 'Edit Post',
@@ -53,7 +53,7 @@ class PostController extends Controller
     {
         $result = $this->postService->update($request, $post);
         if ($result) {
-            return redirect('/admin/posts/list');
+            return redirect('/posts/list');
         }
 
         return redirect()->back();

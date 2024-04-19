@@ -24,11 +24,10 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            
-            'description' => 'required|min:10',
+            'title' => 'required|max:200',
+            'description' => 'required|min:10|max:500',
             'content' => 'required|min:20',
-            'id_category' => ['required', 'integer', function($attribute, $value, $fail){
+            'id_category' => ['exists:categories,id','required', 'integer', function($attribute, $value, $fail){
                 if ($value==0) {
                     $fail('Unselected category');
                 }
@@ -40,10 +39,12 @@ class CreatePostRequest extends FormRequest
     {
         return [
             'title.required' => 'Post title is not blank',
+            'title.max' => 'Post title must not exceed :max characters',
             'description.required' => 'Description is not blank',
-            'description.min' => 'Description at least 10 characters',
+            'description.min' => 'Description at least :min characters',
+            'description.max' => 'Description no more than :max characters',
             'content.required' => 'Content is not blank',
-            'content.min' => 'Content of at least 20 characters',
+            'content.min' => 'Content of at least :min characters',
             'id_category.required' => 'Unselected category',
             'id_category.integer' => 'Invalid category',
             'img_url.required' => 'Image is not blank',

@@ -23,11 +23,11 @@
                 <td>{{ $post->content }}</td>
                 <td>{{ $post->updated_at }}</td>
                 <td class="justify-content-center">
-                    <a class="btn btn-warning btn-sm" href="/admin/posts/edit/{{ $post->id }}">
+                    <a class="btn btn-warning btn-sm" href="/posts/edit/{{ $post->id }}">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                     <a class="btn btn-danger btn-sm" href="" 
-                        onclick="removeRow({{ $post->id }}, '/admin/posts/destroy')">
+                        onclick="removeRow({{ $post->id }}, '/posts/destroy')">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>

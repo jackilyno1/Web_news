@@ -31,6 +31,11 @@
                 <span style="color: red">{{$message}}</span>
             @enderror
       </div>
+      <div class="form-group mb-3">
+        <label>Role:</label><br>
+        <input type="radio" name="role" value="user" @if($user->role == 'user') checked @endif> User
+        <input class="ml-2" type="radio" name="role" value="admin" @if($user->role == 'admin') checked @endif> Admin
+      </div>
     </div>
     <!-- /.card-body -->
 
