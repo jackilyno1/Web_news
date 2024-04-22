@@ -1,14 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
-use App\Http\Controllers\Admin\Users\AdminController;
+// use App\Http\Controllers\Admin\Users\AdminController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CommentController;
+// use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\User\UserPostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
@@ -88,6 +90,11 @@ Route::middleware(['role:admin'])->group(function(){
 });
 
 Route::middleware('role:user')->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    
+    Route::get('/home', [UserPostController::class, 'index'])->name('home');
+
+    Route::get('/post/{post}', [UserPostController::class, 'show'])->name('post.show');
+
+    Route::post('/post/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 });
 

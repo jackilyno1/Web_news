@@ -58,4 +58,7 @@ class PostService
 
         return false;
     }
+    public function getAllUser(){
+        return Post::orderby('id')->paginate();
+    }
 }

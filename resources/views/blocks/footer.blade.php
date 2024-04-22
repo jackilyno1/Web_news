@@ -7,4 +7,8 @@
 
 <script src="{{url('js')}}/main.js"></script>
 
+<script>
+    CKEDITOR.replace('content');
+  </script>
+
 @yield('footer')
