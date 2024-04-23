@@ -16,12 +16,12 @@ class AuthenticateUser
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next )
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        // if (Auth::check() && Auth::user()->isUser()) {
-        //     return $next($request);
-        // }
-
-        // return redirect()->route('login');
+        if ($request->user() && in_array($request->user()->role, $roles)) {
+            return $next($request);
+        }
+        
+        return redirect()->route('login');
     }
 }

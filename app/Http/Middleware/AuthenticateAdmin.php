@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckRole
+class AuthenticateAdmin
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if (! $request->user() || ! in_array($request->user()->role, $roles)) {
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
 
         return $next($request);

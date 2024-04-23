@@ -21,28 +21,40 @@
                         </ul>
                     </li>
                     <form class="d-flex" role="search">
-                        <input style="width: 400px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input style="width: 350px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>
                     </form>
                 </ul>
-                <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    @if (Auth::check())
+                        <li class="nav-item">
+                            <b class="nav-link">Hello, {{ Auth::user()->name }}</b>
+                        </li>
+                            <li class="nav-item">
+                                <form action="{{ route('logoutUser') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link nav-link">Log out</button>
+                                </form>
+                            </li>
+                    @else
                     <li class=" dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"aria-expanded="false">
+                        <a class="nav-link dropdown-toggle"data-bs-toggle="dropdown"aria-expanded="false">
                             <b>Account</b>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{route('loginUser')}}">
                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                                     <b>Sign In</b>
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{route('register')}}">
                                 <i class="fa fa-users" aria-hidden="true"></i>
                                     <b>Sign Up</b>
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </li>
                 </ul>
