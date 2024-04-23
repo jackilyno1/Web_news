@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\MainController;
 // use App\Http\Controllers\Admin\Users\AdminController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CommentController;
 // use App\Http\Controllers\HomeController;
@@ -12,6 +12,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\User\UserPostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\UsersLoginController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -25,21 +26,27 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Auth::routes();
+Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-
-Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+Route::post('/admin/login', [LoginController::class, 'login'])->name('login.post');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware(['role:admin'])->group(function(){
+Route::get('/user/login', [UsersLoginController::class, 'indexUser'])->name('loginUser');
+
+Route::post('/user/login', [UsersLoginController::class, 'loginUser'])->name('loginUser.post');
+
+Route::post('/logoutUser', [UsersLoginController::class, 'logoutUser'])->name('logoutUser');
+
+Route::get('/register', [UsersLoginController::class, 'showRegistrationForm']);
+
+Route::post('/register', [UsersLoginController::class, 'register'])->name('register');
+
+Route::middleware(['admin:admin'])->group(function(){
         Route::get('/', [MainController::class, 'index'])->name('admin');
 
         Route::get('dashboard', [MainController::class, 'index'])->name('index');
         
-    
-
     //Categories
     Route::prefix('categories')->name('cate.')->group(function (){
 
@@ -89,9 +96,9 @@ Route::middleware(['role:admin'])->group(function(){
 
 });
 
-Route::middleware('role:user')->group(function () {
-    
-    Route::get('/home', [UserPostController::class, 'index'])->name('home');
+Route::get('/home', [UserPostController::class, 'index'])->name('home');
+
+Route::middleware('user:user')->group(function () {
 
     Route::get('/post/{post}', [UserPostController::class, 'show'])->name('post.show');
 

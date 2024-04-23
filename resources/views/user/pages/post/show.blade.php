@@ -105,7 +105,7 @@
                 @endforeach --}}
 
                 {{-- @auth --}}
-                    <form action="{{ route('comments.store', $post) }}" method="post" class="mb-3">
+                    {{-- <form action="{{ route('comments.store', $post) }}" method="post" class="mb-3">
                         @csrf
                         <div class="form-group mb-3">
                             <textarea name="content" id="content" class="form-control" rows="3" required></textarea>
@@ -115,7 +115,7 @@
                         </div>
                     </form>
                 {{-- @else --}}
-                    <p class="text-muted">You need to <a href="{{ route('login') }}">login</a> to add a comment.</p>
+                    {{-- <p class="text-muted">You need to <a href="{{ route('login') }}">login</a> to add a comment.</p> --}}
                 {{-- @endauth --}}
             </div>
         </div>
