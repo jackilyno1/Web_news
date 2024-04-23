@@ -43,7 +43,7 @@
 
       <div class="form-group" >
         <label for="content">Content</label>
-        <textarea name="content" style="height: 200px" id="content" class="form-control" placeholder="Enter Content">{{old('content')}}</textarea>
+        <textarea name="content" id="content" class="form-control" placeholder="Enter Content">{{old('content')}}</textarea>
             @error('content')
                 <span style="color: red">{{$message}}</span>
             @enderror

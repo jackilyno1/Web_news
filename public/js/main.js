@@ -39,7 +39,7 @@ $("#upload").change(function () {
         type: "POST",
         dataType: "JSON",
         data: form,
-        url: "/admin/upload/services",
+        url: "/upload/services",
         success: function (result) {
             if (result.error == false) {
                 $("#image_show").html(

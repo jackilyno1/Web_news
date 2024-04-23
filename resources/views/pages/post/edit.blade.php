@@ -70,7 +70,7 @@
     <!-- /.card-body -->
 
     <div class="card-footer d-flex justify-content-end">
-      <button type="submit" class="btn btn-primary col-3 py-2">Create</button>
+      <button type="submit" class="btn btn-primary col-3 py-2">Update</button>
     </div>
     @csrf
   </form>

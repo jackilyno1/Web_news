@@ -15,7 +15,7 @@ class Functions{
                         <td>'.$category->name.'</td>
                         <td>'.$category->updated_at.'</td>
                         <td>
-                            <a class=" ml-4 mr-4 btn btn-warning btn-sm" href="/admin/categories/edit/'. $category->id .'">
+                            <a class=" ml-4 mr-4 btn btn-warning btn-sm" href="/categories/edit/'. $category->id .'">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                             <a class="btn btn-danger btn-sm" href="" 

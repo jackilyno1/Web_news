@@ -5,12 +5,16 @@ namespace App\Http\Services;
 
 use App\Models\Categories;
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class UserService
 {
+    public function getRole(){
+        return User::where('role')->get();
+    }
 
     public function getAll(){
         return User::orderby('id')->paginate(5);
@@ -23,6 +27,7 @@ class UserService
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
+                'role' => $request->input('role'),
             ]);
             Session::flash('success', 'User added successfully');
         } catch (\Exception $err) {
@@ -39,6 +44,7 @@ class UserService
             $user->name = (string) $request->input('name');
             $user->email = (string) $request->input('email');
             $user->password = (string) bcrypt($request->input('password'));
+            $user->role = $request->input('role');
             $user->save();
             Session::flash('success', 'Update successful');
         } catch (\Exception $err) {

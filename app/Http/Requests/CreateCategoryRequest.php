@@ -24,13 +24,15 @@ class CreateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:200|unique:categories',
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'Category name is not blank',
+            'name.max' => 'Category name must not exceed :max characters',
+            'name.unique' => 'Name already exists on the system',
         ];
     }
 }
