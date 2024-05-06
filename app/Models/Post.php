@@ -19,4 +19,8 @@ class Post extends Model
     public function post(){
         return $this->hasOne(Categories::class, 'id', 'id_category');
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

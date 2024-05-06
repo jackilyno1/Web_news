@@ -12,9 +12,9 @@
         <label for="title">Post title</label>
         <input type="text" name="title" class="form-control" id="title" placeholder="Enter title"
               value="{{old('title')}}">
-        @error('title')
+            {{-- @error('title')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
       </div>
 
 
@@ -26,36 +26,36 @@
                         <option value="{{$category->id}}" {{old('id_category')==$category->id?'selected':false}}>{{$category->name}}</option>
                     @endforeach
             </select>
-            @error('id_category')
+            {{-- @error('id_category')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
         </div>
 
 
       <div class="form-group">
         <label for="description">Describe</label>
         <textarea name="description" class="form-control" placeholder="Short description">{{old('description')}}</textarea>
-            @error('description')
+            {{-- @error('description')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
       </div>
 
 
       <div class="form-group" >
         <label for="content">Content</label>
         <textarea name="content" id="content" class="form-control" placeholder="Enter Content">{{old('content')}}</textarea>
-            @error('content')
+            {{-- @error('content')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
       </div>
 
 
       <div class="form-group">
         <label>Image Upload</label>
         <input type="file" class="form-control-file" id="upload" name="file">
-            @error('img_url')
+            {{-- @error('img_url')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
             <div id="image_show">
 
             </div>

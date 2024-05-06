@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Role::create(['name' => 'admin']);
-        // Role::create(['name' => 'user']);
+        \App\Models\User::factory(5)->create();
+        \App\Models\Post::factory(10)->create();
+        \App\Models\Comment::factory(15)->create();
+        \App\Models\Categories::factory(5)->create();
     }
 }
