@@ -7,13 +7,14 @@
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div id="image_show" class="d-flex justify-content-center">
-                        <a href="{{ route('post.show', $post->id) }}">
                           <img src="{{ $post->img_url }}" width="200px" height="200px" alt="{{ $post->title }}">
-                        </a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary" href="{{ route('post.show', $post->id) }}">Xem chi tiết</a>
                     </div>
                 </div>
             </div>

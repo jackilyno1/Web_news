@@ -40,6 +40,8 @@ Route::post('/logoutUser', [UsersLoginController::class, 'logoutUser'])->name('l
 
 Route::get('/register', [UsersLoginController::class, 'showRegistrationForm']);
 
+Route::get('/test-email', [UsersLoginController::class, 'processQueue']);
+
 Route::post('/register', [UsersLoginController::class, 'register'])->name('register');
 
 Route::middleware(['admin:admin'])->group(function(){
@@ -98,10 +100,10 @@ Route::middleware(['admin:admin'])->group(function(){
 
 Route::get('/home', [UserPostController::class, 'index'])->name('home');
 
+Route::get('/post/{post}', [UserPostController::class, 'show'])->name('post.show');
+
 Route::middleware('user:user')->group(function () {
 
-    Route::get('/post/{post}', [UserPostController::class, 'show'])->name('post.show');
-
-    Route::post('/post/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/post/{post}/comments', [CommentController::class, 'store']);
 });
 

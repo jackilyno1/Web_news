@@ -4,6 +4,7 @@
 namespace App\Http\Services;
 
 use App\Models\Categories;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -60,5 +61,9 @@ class PostService
     }
     public function getAllUser(){
         return Post::orderby('id')->paginate();
+    }
+
+    public function getComment($post, $user){
+        return Comment::where('post_id', $post->id)->where('user_id', $user->id)->get();
     }
 }

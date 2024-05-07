@@ -14,12 +14,12 @@
                             </a>
                             <ul class="dropdown-menu">
                                 @foreach($categories as $category)
-                                <li>
-                                    <a class="dropdown-item" href="#">{{ $category->name }}</a>
+                                <li class="dropdown-item">
+                                    {{ $category->name }}
                                 </li>
                                 @endforeach
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
                     <form class="d-flex" role="search">
                         <input style="width: 350px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>

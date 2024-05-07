@@ -25,11 +25,11 @@ class UserPostController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($post)
     {   
         return view('user.pages.post.show', [
             'title' => 'Detail Posts',
-            'post' => Post::findOrFail($id),
+            'post' => Post::findOrFail($post),
             'categories' => $this->postService->getCategory(),
         ]);
         

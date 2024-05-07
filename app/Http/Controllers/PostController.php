@@ -37,7 +37,7 @@ class PostController extends Controller
     {
         $this->postService->insert($request);
 
-        return redirect()->back();
+        return redirect()->route('post.list');
     }
 
     public function edit(Post $post)

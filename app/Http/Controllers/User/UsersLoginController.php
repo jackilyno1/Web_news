@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateLoginRequest;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Services\UserService;
+use App\Jobs\SendWelcomeEmailJob;
+use App\Mail\WelcomeEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Session;
 
 class UsersLoginController extends Controller
@@ -62,10 +66,14 @@ class UsersLoginController extends Controller
             'password' => bcrypt($validatedData['password']),
         ]);
 
+        $emailJob = new SendWelcomeEmailJob();
+        dispatch($emailJob);
+
         Auth::login($user);
 
         return redirect()->route('home');
     }
+
     public function logoutUser()
     {
         Auth::logout();

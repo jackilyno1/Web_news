@@ -8,19 +8,18 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Post $post)
+    public function store(Request $request, $detailId)
     {
         $request->validate([
             'content' => 'required',
         ]);
 
-        // Create new comment
-        Comment::create([
-            'content' => $request->content,
-            'post_id' => $post->id,
-            'user_id' => auth()->id(),
-        ]);
+        $comment = new Comment();
+        $comment->user_id = auth()->id();
+        $comment->post_id = $detailId;
+        $comment->content = $request->content;
+        $comment->save();
 
-        return back()->with('success', 'Comment added successfully.');
-    }
+        return back();
+}
 }
