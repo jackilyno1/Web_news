@@ -12,27 +12,27 @@
         <label for="title">Username</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Enter name"
               value="{{old('name')}}">
-        @error('name')
+            {{-- @error('name')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
       </div>
 
       <div class="form-group mb-3">
         <label for="email">Email</label>
         <input type="text" name="email" class="form-control" id="email" placeholder="Enter email"
               value="{{old('email')}}">
-        @error('email')
+            {{-- @error('email')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
       </div>
 
       <div class="form-group mb-3">
         <label for="password">Password</label>
         <input type="password" name="password" class="form-control" id="password" placeholder="Enter password"
               value="{{old('password')}}">
-        @error('password')
+            {{-- @error('password')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
       </div>
       <div class="form-group mb-3">
         <label>Role:</label><br>

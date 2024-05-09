@@ -29,7 +29,7 @@ class PostControllerTest extends TestCase
             'title' => 'Test Post',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'id_category' => 7,
+            'id_category' => 10,
             'img_url' => 'https://lorempixel.com/640/480/?76598'
         ];
 
@@ -57,17 +57,17 @@ class PostControllerTest extends TestCase
     {
         $post = Post::factory()->create();
         $data = [
-            'title' => 'Unde sequi perspiciatis accusantium quos qui tempore nihil.',
-            'description' => 'Quisquam eos sequi ut voluptatem tempora dignissimos.',
-            'content' => 'Ut laudantium nihil qui saepe accusantium voluptatem. Voluptas voluptas ad consequatur qui illum. Qui ullam dolor blanditiis minima officia voluptates rem.',
-            'id_category' => 5,
-            'img_url' => 'https://lorempixel.com/640/480/?76598'
+            'title' => 'Modi quisquam sunt optio aut molestiae totam.',
+            'description' => 'Quae voluptas neque illo officia soluta dignissimos sequi.',
+            'content' => 'A corrupti velit numquam id eligendi recusandae. Aspernatur unde maiores ipsam amet vero. Facilis minus alias accusantium accusamus qui dignissimos qui placeat. Mollitia iste dolorem hic voluptate voluptate molestiae vel. Sit sed assumenda earum est alias cupiditate id sunt.',
+            'id_category' => 8,
+            'img_url' => 'https://lorempixel.com/640/480/?38243'
         ];
 
         $response = $this->withoutMiddleware()->post("/posts/edit/{$post->id}", $data);
         
         $response->assertRedirect('/posts/list');
-        $this->assertDatabaseHas('posts', ['title' => 'Unde sequi perspiciatis accusantium quos qui tempore nihil.']);
+        $this->assertDatabaseHas('posts', ['title' => 'Modi quisquam sunt optio aut molestiae totam.']);
     }
 
     /** @test */
