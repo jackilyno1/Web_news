@@ -18,7 +18,6 @@
             <tr>
                 <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
-                <td>{{ $post->post->name }}</td>
                 <td>{{ $post->description }}</td>
                 <td>{{ $post->content }}</td>
                 <td>{{ $post->updated_at }}</td>

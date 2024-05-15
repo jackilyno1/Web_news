@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+
     /** @test */
     public function it_displays_create_user_form()
     {
@@ -50,8 +51,8 @@ class UserControllerTest extends TestCase
 
         $data = [
             'name' => 'Tiến Minh',
-            'email' => 'fdsadsfa@gmail.com',
-            'password' => bcrypt('kakakakaka')
+            'email' => 'minhhap203@gmail.com',
+            'password' => bcrypt('123456789')
         ];
 
         $response = $this->withoutMiddleware()->withoutExceptionHandling()->post("/users/edit/{$users->id}", $data);
@@ -65,8 +66,8 @@ class UserControllerTest extends TestCase
     {
         $user = User::create([
             'name' => 'Tiến Minh',
-            'email' => 'fdsadsfa@gmail.com',
-            'password' => bcrypt('kakakakaka'),
+            'email' => 'minhhap203@gmail.com',
+            'password' => bcrypt('123456789'),
             // Đảm bảo rằng bạn đã thêm tất cả các trường cần thiết
         ]);
     

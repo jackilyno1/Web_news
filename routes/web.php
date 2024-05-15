@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CommentController;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostControllerNew;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\User\UserPostController;
 use App\Http\Controllers\UserController;
@@ -65,12 +66,14 @@ Route::middleware(['admin:admin'])->group(function(){
         Route::DELETE('/destroy', [CategoriesController::class, 'destroy'])->name('delete');
     });
     #Post
+    
     Route::prefix('posts')->name('post.')->group(function (){
+        
         Route::get('/add', [PostController::class, 'create'])->name('addPost');
 
          Route::post('/add', [PostController::class, 'storePost'])->name('storePost');
 
-         Route::get('/list', [PostController::class, 'index'])->name('list');
+        Route::get('/list', [PostController::class, 'index'])->name('list');
 
          Route::get('/edit/{post}', [PostController::class, 'edit'])->name('edit');
 
@@ -78,6 +81,8 @@ Route::middleware(['admin:admin'])->group(function(){
 
          Route::DELETE('/destroy', [PostController::class, 'destroy'])->name('delete');
     });
+
+    
 
     Route::prefix('users')->name('user.')->group(function (){
         Route::get('/add', [UserController::class, 'create'])->name('addUser');
@@ -107,3 +112,4 @@ Route::middleware('user:user')->group(function () {
     Route::post('/post/{post}/comments', [CommentController::class, 'store']);
 });
 
+// Route::apiResource('posts', PostControllerNew::class);

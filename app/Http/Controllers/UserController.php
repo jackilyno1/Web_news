@@ -36,7 +36,7 @@ class UserController extends Controller
         $this->userService->insert($request, $user);
         $user = new User();
         $user->role = $request->input('role');
-        return redirect()->route('user.list');
+        return redirect('/users/list');
     }
 
     public function edit(User $user)
