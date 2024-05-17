@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\MainController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Api\CategoryApi;
+use App\Http\Controllers\Api\UserApi;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CommentController;
 // use App\Http\Controllers\HomeController;
@@ -84,19 +86,19 @@ Route::middleware(['admin:admin'])->group(function(){
 
     
 
-    Route::prefix('users')->name('user.')->group(function (){
-        Route::get('/add', [UserController::class, 'create'])->name('addUser');
+    // Route::prefix('users')->name('user.')->group(function (){
+    //     Route::get('/add', [UserController::class, 'create'])->name('addUser');
 
-         Route::post('/add', [UserController::class, 'storeUser'])->name('storeUser');
+    //      Route::post('/add', [UserController::class, 'storeUser'])->name('storeUser');
 
-         Route::get('/list', [UserController::class, 'index'])->name('list');
+    //      Route::get('/list', [UserController::class, 'index'])->name('list');
 
-         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+    //      Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
 
-         Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
+    //      Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
 
-         Route::DELETE('/destroy', [UserController::class, 'destroy'])->name('delete');
-    });
+    //      Route::DELETE('/destroy', [UserController::class, 'destroy'])->name('delete');
+    // });
 
         #upload
         Route::post('/upload/services', [UploadController::class, 'store']);
@@ -111,5 +113,7 @@ Route::middleware('user:user')->group(function () {
 
     Route::post('/post/{post}/comments', [CommentController::class, 'store']);
 });
-
+// api
 // Route::apiResource('posts', PostControllerNew::class);
+// Route::apiResource('categories', CategoryApi::class);
+Route::apiResource('users', UserApi::class);
