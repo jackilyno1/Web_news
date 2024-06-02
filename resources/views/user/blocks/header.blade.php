@@ -4,7 +4,7 @@
             <img src="{{url('template/user')}}/img/Logo1.png" width="130px">
         </a>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-5 mb-2 mb-lg-0">
                     <li class="nav-item">
                       <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
@@ -20,12 +20,12 @@
                                 @endforeach
                             </ul>
                         </li>
-                    <form class="d-flex" role="search">
-                        <input style="width: 350px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex mt-3 me-5" style="height: 40px" role="search">
+                        <input style="width: 350px;" class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>
                     </form>
                 </ul>
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-lg-0">
                     @if (Auth::check())
                         <li class="nav-item">
                             <b class="nav-link">Hello, {{ Auth::user()->name }}</b>

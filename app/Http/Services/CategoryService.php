@@ -49,7 +49,8 @@ class CategoryService
         $category = Categories::where('id', $id)->first();
 
         if ($category) {
-            return Categories::where('id', $id)->delete();
+            $category->delete();
+            return true;
         }
         return false;
     }

@@ -60,7 +60,7 @@ class PostService
         return false;
     }
     public function getAllUser(){
-        return Post::orderby('id')->paginate();
+        return Post::orderby('id')->paginate(15);
     }
 
     public function getComment($post, $user){

@@ -8,9 +8,9 @@
         <div class="form-group">
           <label for="name">Name Category</label>
           <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
-            @error('name')
+            {{-- @error('name')
                 <span style="color: red">{{$message}}</span>
-            @enderror
+            @enderror --}}
         </div>
       </div>
       <!-- /.card-body -->

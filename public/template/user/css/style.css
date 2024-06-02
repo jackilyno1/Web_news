@@ -1,5 +1,3 @@
-/********** Template CSS **********/
-
 :root {
     --primary: #808080;
     --light: #f0fbfc;
@@ -22,7 +20,6 @@
     z-index: 99;
 }
 
-
 /*** Spinner ***/
 
 #spinner {
@@ -37,7 +34,6 @@
     visibility: visible;
     opacity: 1;
 }
-
 
 /*** Button ***/
 
@@ -78,7 +74,6 @@
     border-radius: 0px;
 }
 
-
 /*** Navbar ***/
 
 .navbar .dropdown-toggle::after {
@@ -92,7 +87,7 @@
 
 .navbar-light .navbar-nav .nav-link {
     margin-right: 50px;
-    /* padding: 25px 0; */
+    padding: 25px 0;
     color: #ffffff;
     font-size: 15px;
     text-transform: uppercase;
@@ -130,13 +125,13 @@
 }
 
 @media (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu {
+    /* .navbar .nav-item .dropdown-menu {
         display: block;
         margin-right: 100;
         opacity: 0;
         visibility: hidden;
         transition: 0.5s;
-    }
+    } */
     .navbar .dropdown-menu.fade-down {
         top: 100%;
         transform: rotateX(-75deg);
@@ -150,7 +145,6 @@
         opacity: 1;
     }
 }
-
 
 /*** Header carousel ***/
 
@@ -198,7 +192,8 @@
 }
 
 .page-header {
-    background: linear-gradient(rgba(24, 29, 56, 0.7), rgba(24, 29, 56, 0.7)), url(../img/carousel-1.jpg);
+    background: linear-gradient(rgba(24, 29, 56, 0.7), rgba(24, 29, 56, 0.7)),
+        url(../img/carousel-1.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -208,10 +203,9 @@
     background: rgba(15, 23, 43, 0.7);
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
+.breadcrumb-item + .breadcrumb-item::before {
     color: var(--light);
 }
-
 
 /*** Section Title ***/
 
@@ -253,7 +247,6 @@
     left: 0;
 }
 
-
 /*** Service ***/
 
 .service-item {
@@ -274,7 +267,6 @@
     color: var(--light) !important;
 }
 
-
 /*** Categories & Courses ***/
 
 .category img,
@@ -287,7 +279,6 @@
     transform: scale(1.1);
 }
 
-
 /*** Team ***/
 
 .team-item img {
@@ -298,7 +289,6 @@
     transform: scale(1.1);
 }
 
-
 /*** Testimonial ***/
 
 .testimonial-carousel::before {
@@ -308,7 +298,11 @@
     left: 0;
     height: 100%;
     width: 0;
-    background: linear-gradient( to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
     z-index: 1;
 }
 
@@ -319,7 +313,11 @@
     right: 0;
     height: 100%;
     width: 0;
-    background: linear-gradient( to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
     z-index: 1;
 }
 
@@ -371,7 +369,6 @@
     background: var(--primary);
     border-color: var(--primary);
 }
-
 
 /*** Footer ***/
 
