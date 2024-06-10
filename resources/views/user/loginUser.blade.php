@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('blocks.head')
+    @include('admin.blocks.head')
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -14,7 +14,7 @@
         <div class="login-logo">
             <b>Login</b>
         </div>
-      <form action="{{ route('loginUser.post') }}" method="post">
+      <form action="{{ route('user.login.post') }}" method="post">
         <div class="form-group mb-3">
           <div class="input-group">
             <input type="email" name="email" class="form-control" placeholder="Email"
@@ -71,6 +71,6 @@
   </div>
 </div>
 <!-- Footer -->
-@include('blocks.footer')
+@include('admin.blocks.footer')
 </body>
 </html>

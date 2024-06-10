@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Services\UserService;
 use App\Models\User;
@@ -18,14 +19,14 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('pages.user.list', [
+        return view('admin.pages.user.list', [
             'title' => 'List of user',
             'users' => $this->userService->getAll(),
         ]);
     }
     public function create()
     {
-        return view('pages.user.add',[
+        return view('admin.pages.user.add',[
             'title' => 'Create User',
             'roles' => $this->userService->getRole(),
         ]);
@@ -41,7 +42,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('pages.user.edit', [
+        return view('admin.pages.user.edit', [
             'title' => 'Edit User',
             'user'=> $user,
             // 'roles' => $this->userService->getRole(),

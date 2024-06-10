@@ -1,20 +1,25 @@
 <?php
 
-use App\Http\Controllers\Admin\MainController;
+
 // use App\Http\Controllers\Admin\Users\AdminController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\LoginController;
+
+use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UploadController;
+
+use App\Http\Controllers\CommentController;
+
+use App\Http\Controllers\PostControllerNew;
 use App\Http\Controllers\Api\CategoryApi;
 use App\Http\Controllers\Api\UserApi;
-use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\CommentController;
-// use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\PostControllerNew;
-use App\Http\Controllers\UploadController;
+
 use App\Http\Controllers\User\UserPostController;
-use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\User\UsersLoginController;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,28 +34,32 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
+Route::prefix('admin')->name('admin.')->group(function(){
 
-Route::post('/admin/login', [LoginController::class, 'login'])->name('login.post');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
-Route::get('/user/login', [UsersLoginController::class, 'indexUser'])->name('loginUser');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
 
-Route::post('/user/login', [UsersLoginController::class, 'loginUser'])->name('loginUser.post');
+Route::prefix('user')->name('user.')->group(function(){
+    Route::get('/login', [UsersLoginController::class, 'indexUser'])->name('login');
 
-Route::post('/logoutUser', [UsersLoginController::class, 'logoutUser'])->name('logoutUser');
+    Route::post('/login', [UsersLoginController::class, 'loginUser'])->name('login.post');
+
+    Route::post('/logout', [UsersLoginController::class, 'logout'])->name('logout');
+});
 
 Route::get('/register', [UsersLoginController::class, 'showRegistrationForm']);
 
-Route::get('/test-email', [UsersLoginController::class, 'processQueue']);
-
 Route::post('/register', [UsersLoginController::class, 'register'])->name('register');
 
-Route::middleware(['admin:admin'])->group(function(){
-        Route::get('/', [MainController::class, 'index'])->name('admin');
+// Route::get('/test-email', [UsersLoginController::class, 'processQueue']);
 
-        Route::get('dashboard', [MainController::class, 'index'])->name('index');
+Route::middleware(['admin:admin'])->group(function(){
+
+    Route::get('dashboard', [MainController::class, 'index'])->name('index');
         
     //Categories
     Route::prefix('categories')->name('cate.')->group(function (){
@@ -86,19 +95,19 @@ Route::middleware(['admin:admin'])->group(function(){
 
     
 
-    // Route::prefix('users')->name('user.')->group(function (){
-    //     Route::get('/add', [UserController::class, 'create'])->name('addUser');
+    Route::prefix('users')->name('user.')->group(function (){
+        Route::get('/add', [UserController::class, 'create'])->name('addUser');
 
-    //      Route::post('/add', [UserController::class, 'storeUser'])->name('storeUser');
+         Route::post('/add', [UserController::class, 'storeUser'])->name('storeUser');
 
-    //      Route::get('/list', [UserController::class, 'index'])->name('list');
+         Route::get('/list', [UserController::class, 'index'])->name('list');
 
-    //      Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
 
-    //      Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
+         Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
 
-    //      Route::DELETE('/destroy', [UserController::class, 'destroy'])->name('delete');
-    // });
+         Route::DELETE('/destroy', [UserController::class, 'destroy'])->name('delete');
+    });
 
         #upload
         Route::post('/upload/services', [UploadController::class, 'store']);
@@ -116,4 +125,4 @@ Route::middleware('user:user')->group(function () {
 // api
 // Route::apiResource('posts', PostControllerNew::class);
 // Route::apiResource('categories', CategoryApi::class);
-Route::apiResource('users', UserApi::class);
+// Route::apiResource('users', UserApi::class);

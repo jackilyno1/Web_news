@@ -18,7 +18,7 @@ class PostControllerTest extends TestCase
         $response = $this->withoutMiddleware()->get('/posts/add');
 
         $response->assertStatus(200);
-        $response->assertViewIs('pages.post.add');
+        $response->assertViewIs('admin.pages.post.add');
                 //  ->assertViewHas('title', 'Create post');
     }
 
@@ -36,6 +36,7 @@ class PostControllerTest extends TestCase
         $response = $this->withoutMiddleware()->post('/posts/add', $data);
 
         $response->assertRedirect('/posts/list');
+
         $this->assertDatabaseHas('posts', ['title' => 'Test Post']);
     }
 
@@ -47,7 +48,7 @@ class PostControllerTest extends TestCase
         $response = $this->withoutMiddleware()->withoutExceptionHandling()->get("/posts/edit/{$post->id}");
 
         $response->assertStatus(200)
-                 ->assertViewIs('pages.post.edit')
+                 ->assertViewIs('admin.pages.post.edit')
                  ->assertViewHas('title', 'Edit Post');
                 //  ->assertViewHas('post', $post);
     }
@@ -60,13 +61,14 @@ class PostControllerTest extends TestCase
             'title' => 'Modi quisquam sunt optio aut molestiae totam.',
             'description' => 'Quae voluptas neque illo officia soluta dignissimos sequi.',
             'content' => 'A corrupti velit numquam id eligendi recusandae. Aspernatur unde maiores ipsam amet vero. Facilis minus alias accusantium accusamus qui dignissimos qui placeat. Mollitia iste dolorem hic voluptate voluptate molestiae vel. Sit sed assumenda earum est alias cupiditate id sunt.',
-            'id_category' => 8,
+            'id_category' => 10,
             'img_url' => 'https://lorempixel.com/640/480/?38243'
         ];
 
         $response = $this->withoutMiddleware()->post("/posts/edit/{$post->id}", $data);
         
         $response->assertRedirect('/posts/list');
+
         $this->assertDatabaseHas('posts', ['title' => 'Modi quisquam sunt optio aut molestiae totam.']);
     }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('blocks.head')
+    @include('admin.blocks.head')
 </head>
 <body class="register-page" style="min-height: 568.802px;">
 <div class="register-box">
@@ -62,6 +62,6 @@
       </div>
     </div>
   </div>
-  @include('blocks.footer')
+  @include('admin.blocks.footer')
 </body>
 </html>

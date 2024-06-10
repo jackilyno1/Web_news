@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Services\CategoryService;
 use App\Models\Categories;
@@ -20,7 +21,7 @@ class CategoriesController extends Controller
 
     public function create()
     {
-        return view('pages.category.add',[
+        return view('admin.pages.category.add',[
             'title' => 'Create category',
         ]);
     }
@@ -35,7 +36,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        return view('pages.category.list', [
+        return view('admin.pages.category.list', [
             'title' => 'List of category',
             'categories' => $this->categoryService->getAll(),
         ]);
@@ -44,7 +45,7 @@ class CategoriesController extends Controller
     public function show(Categories $categories)
     {
         // dd($categories->name);
-        return view('pages.category.edit', [
+        return view('admin.pages.category.edit', [
             'title' => 'Edit categories: ' . $categories->name,
             'categories' => $categories,
         ]);

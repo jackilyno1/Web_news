@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a style="text-decoration: none" href="/admin" class="brand-link">
+    <a style="text-decoration: none" href="/dashboard" class="brand-link">
       <img src="{{url('template/admin')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
@@ -105,7 +105,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="{{ route('login') }}">
+            <a class="nav-link text-center" href="{{ route('admin.login') }}">
               <i class=" nav-icon fa fa-sign-out" aria-hidden="true"></i>
               <p>Logout</p>
             </a>

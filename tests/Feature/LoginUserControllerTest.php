@@ -69,7 +69,7 @@ class LoginUserControllerTest extends TestCase
         $user = User::factory()->create();
         Auth::login($user);
 
-        $response = $this->post('/logoutUser');
+        $response = $this->post('/user/logout');
 
         $response->assertRedirect('/home');
         $this->assertGuest();

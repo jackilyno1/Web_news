@@ -19,7 +19,7 @@ class AuthenticateAdmin
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if (! $request->user() || ! in_array($request->user()->role, $roles)) {
-            return redirect()->route('login');
+            return redirect()->route('admin.login');
         }
 
         return $next($request);

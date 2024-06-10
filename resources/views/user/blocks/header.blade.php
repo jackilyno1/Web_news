@@ -4,7 +4,7 @@
             <img src="{{url('template/user')}}/img/Logo1.png" width="130px">
         </a>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
                       <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
@@ -20,18 +20,18 @@
                                 @endforeach
                             </ul>
                         </li>
-                    <form class="d-flex mt-3 me-5" style="height: 40px" role="search">
+                    <form class="d-flex mt-3" style="height: 40px" role="search">
                         <input style="width: 350px;" class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>
                     </form>
                 </ul>
-                <ul class="navbar-nav mb-lg-0">
+                <ul class="navbar-nav">
                     @if (Auth::check())
                         <li class="nav-item">
-                            <b class="nav-link">Hello, {{ Auth::user()->name }}</b>
+                            <a class="nav-link">Hello, {{ Auth::user()->name }}</a>
                         </li>
                             <li class="nav-item">
-                                <form action="{{ route('logoutUser') }}" method="POST">
+                                <form action="{{ route('user.logout') }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-link nav-link">Log out</button>
                                 </form>
@@ -43,7 +43,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="{{route('loginUser')}}">
+                                <a class="dropdown-item" href="{{route('user.login.post')}}">
                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                                     <b>Sign In</b>
                                 </a>

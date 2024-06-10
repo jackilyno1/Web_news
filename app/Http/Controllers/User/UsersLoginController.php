@@ -74,7 +74,7 @@ class UsersLoginController extends Controller
         return redirect()->route('home');
     }
 
-    public function logoutUser()
+    public function logout()
     {
         Auth::logout();
         return redirect()->route('home');
