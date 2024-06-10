@@ -15,7 +15,7 @@ class CategoryControllerTest extends TestCase
         $response = $this->withoutMiddleware()->get('/categories/add');
 
         $response->assertStatus(200);
-        $response->assertViewIs('pages.category.add');
+        $response->assertViewIs('admin.pages.category.add');
                 //  ->assertViewHas('title', 'Create Category');
     }
 
@@ -27,6 +27,8 @@ class CategoryControllerTest extends TestCase
         ]);
 
         $response->assertRedirect();
+
+        $this->assertDatabaseHas('categories', ['name' => 'New Category']);
         // $this->assertCount(1, Categories::all());
     }
 
@@ -38,23 +40,27 @@ class CategoryControllerTest extends TestCase
         $response = $this->withoutMiddleware()->withoutExceptionHandling()->get("/categories/edit/{$category->id}");
 
         $response->assertStatus(200)
-                 ->assertViewIs('pages.category.edit')
+                 ->assertViewIs('admin.pages.category.edit')
                  ->assertViewHas('title', 'Edit categories: ');
     }
 
     /** @test */
     public function it_updates_an_existing_category()
     {
-        $category = Categories::factory()->create();
 
-        $data = [
-            'name' => 'PHP',
-        ];
+    $category = Categories::factory()->create([
+        'name' => 'Java',
+    ]);
 
-        $response = $this->withoutMiddleware()->withoutExceptionHandling()->post("/categories/edit/{$category->id}", $data);
+    $data = [
+        'name' => 'Java',
+    ];
 
-        $response->assertRedirect('/categories/list');
-        // $this->assertEquals('Updated Category', Categories::first()->name);
+    $response = $this->withoutMiddleware()->withoutExceptionHandling()->post("/categories/edit/{$category->id}", $data);
+
+    $response->assertRedirect('/categories/list');
+
+    $this->assertDatabaseHas('categories', ['id' => $category->id, 'name' => 'Java']);
     }
 
     /** @test */

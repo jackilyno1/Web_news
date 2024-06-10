@@ -9,7 +9,7 @@ use App\Models\Categories;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class CategoryApi extends Controller
+class CategoryController extends Controller
 {
     protected $categoryService;
 

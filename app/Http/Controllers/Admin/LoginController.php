@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function index(){
         $title = 'Login';
-        return view('admin.users.login', compact('title'));
+        return view('admin.login', compact('title'));
     }
     public function login(Request $request){
 
@@ -25,7 +25,7 @@ class LoginController extends Controller
             'password' => $request->input('password')
         ], $request->input('remember'))) {
 
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         }
 
         Session::flash('error', 'Email or Password is incorrect');

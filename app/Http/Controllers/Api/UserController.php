@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class UserApi extends Controller
+class UserController extends Controller
 {
     protected $userService;
 

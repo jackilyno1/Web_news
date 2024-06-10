@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @include('blocks.head')
+  @include('admin.blocks.head')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -27,7 +27,7 @@
 
 
   <!-- Main Sidebar Container -->
-  @include('blocks.sidebar')
+  @include('admin.blocks.sidebar')
 
 
   <!-- Content Wrapper. Contains page content -->
@@ -36,7 +36,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        @include('components.alert')
+        @include('admin.components.alert')
         <div class="row">
           <!-- left column -->
             <div class="col-md-12">
@@ -71,6 +71,6 @@
   </footer>
 
 <!-- jQuery -->
-    @include('blocks.footer')
+    @include('admin.blocks.footer')
 </body>
 </html>

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Functions;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Services\PostService;
 use App\Models\Post;
@@ -20,14 +21,14 @@ class PostController extends Controller
 
     public function index()
     {
-        return view('pages.post.list', [
+        return view('admin.pages.post.list', [
             'title' => 'List of post',
             'posts' => $this->postService->getAll(),
         ]);
     }
     public function create()
     {
-        return view('pages.post.add',[
+        return view('admin.pages.post.add',[
             'title' => 'Create post',
             'categories' => $this->postService->getCategory(),
         ]);
@@ -42,7 +43,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('pages.post.edit', [
+        return view('admin.pages.post.edit', [
             'title' => 'Edit Post',
             'post'=> $post,
             'categories' => $this->postService->getCategory(),

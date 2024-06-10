@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('admin.layouts.main')
 
 @section('content')
     <!-- /.card-header -->
@@ -7,7 +7,7 @@
       <div class="card-body">
         <div class="form-group">
           <label for="name">Name Category</label>
-          <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+          <input type="text" name="name" value="{{ $categories->name }}" class="form-control" id="name" placeholder="Enter name">
             {{-- @error('name')
                 <span style="color: red">{{$message}}</span>
             @enderror --}}
@@ -16,7 +16,7 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </div>
       @csrf
     </form>

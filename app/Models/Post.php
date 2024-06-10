@@ -16,7 +16,7 @@ class Post extends Model
         'img_url',
     ];
 
-    public function post(){
+    public function category(){
         return $this->hasOne(Categories::class, 'id', 'id_category');
     }
     public function comments()
